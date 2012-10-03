@@ -1,0 +1,8 @@
+[user]
+	email = andrew@umbrant.com
+	name = Andrew Wang
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
