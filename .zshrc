@@ -47,7 +47,6 @@ setopt share_history
 
 # vi mode
 #bindkey -v
-<<<<<<< HEAD
 
 # rehash autocomplete index on autocomplete
 zstyle ":completion:*:commands" rehash 1
