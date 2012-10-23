@@ -36,7 +36,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zshrc.local
 
 # Customize to your needs...
-export PATH=/home/andrew/local/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin:/home/andrew/local/lejos_nxj/bin
+export PATH=$HOME/local/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin
 
 alias mp="mplayer"
 alias ack="ack-grep"
@@ -47,6 +47,11 @@ setopt share_history
 
 # vi mode
 #bindkey -v
+<<<<<<< HEAD
 
 # rehash autocomplete index on autocomplete
 zstyle ":completion:*:commands" rehash 1
+
+# Run keychain
+keychain -Q -q $HOME/.ssh/id_rsa $HOME/.ssh/id_dsa
+source ~/.keychain/$HOST-sh
