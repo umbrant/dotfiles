@@ -54,3 +54,5 @@ zstyle ":completion:*:commands" rehash 1
 # Run keychain
 keychain -Q -q $HOME/.ssh/id_rsa $HOME/.ssh/id_dsa
 source ~/.keychain/$HOST-sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
