@@ -33,6 +33,8 @@ plugins=(git mvn python ssh-agent svn)
 
 source $ZSH/oh-my-zsh.sh
 
+source $HOME/.zshrc.local
+
 # Customize to your needs...
 export PATH=/home/andrew/local/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin:/home/andrew/local/lejos_nxj/bin
 
@@ -45,3 +47,6 @@ setopt share_history
 
 # vi mode
 #bindkey -v
+
+# rehash autocomplete index on autocomplete
+zstyle ":completion:*:commands" rehash 1
