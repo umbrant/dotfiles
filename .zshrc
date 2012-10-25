@@ -53,7 +53,7 @@ setopt share_history
 zstyle ":completion:*:commands" rehash 1
 
 # Run keychain
-keychain -Q -q $HOME/.ssh/id_rsa
+keychain -q $HOME/.ssh/id_rsa
 source ~/.keychain/$HOST-sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
