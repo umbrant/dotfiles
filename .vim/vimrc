@@ -1,16 +1,3 @@
-" Fix term stuff
-
-" f &term =~ 'xterm'
-"    if $COLORTERM == 'gnome-terminal'
-"        execute 'set t_kb=' . nr2char(8)
-"        fixdel
-"        set t_RV=
-"    elseif $COLORTERM == ''
-"        execute 
-"    endif
-"endif
-
-
 " General
 set nocompatible " get out of horrible vi-compatible mode
 set encoding=utf-8 " Unicode is nice
@@ -30,17 +17,19 @@ endif
 
 set background=dark
 
-" Have to set a different colorscheme for crappy terms
-if $TERM != 'xterm-256color'
-    colorscheme desert
-elseif $TERM == 'xterm-256color'
-    colorscheme inkpot
-    let g:inkpot_black_background = 1
-endif
+" IMPORTANT: Uncomment one of the following lines to force
+" using 256 colors (or 88 colors) if your terminal supports it,
+" but does not automatically use 256 colors by default.
+set t_Co=256
+"set t_Co=88
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+colorscheme inkpot
 
 " nice window splits
+map <C-H> <C-W>h<C-W>_
 map <C-K> <C-W>k<C-W>_
 map <C-J> <C-W>j<C-W>_
+map <C-L> <C-W>l<C-W>_
 
 " Files/Backups
 "set backup " make backup file

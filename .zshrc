@@ -58,4 +58,4 @@ source ~/.keychain/$HOST-sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-TERM=xterm-256color
+#TERM=xterm-256color
