@@ -57,3 +57,5 @@ keychain -q $HOME/.ssh/id_rsa
 source ~/.keychain/$HOST-sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+TERM=xterm-256color
