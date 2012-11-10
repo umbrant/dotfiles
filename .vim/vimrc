@@ -116,7 +116,7 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 " Search & Replace
 set ignorecase
 set smartcase
-set nohlsearch
+set hlsearch
 set incsearch
 
 set wmh=0
