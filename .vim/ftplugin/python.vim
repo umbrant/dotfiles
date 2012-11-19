@@ -1,5 +1,3 @@
-setlocal list " show whitespace
-setlocal listchars=tab:>-,trail:-  " show tabs and trailing whitespace
 setlocal expandtab
 setlocal textwidth=80
 
