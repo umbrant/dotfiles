@@ -56,7 +56,9 @@ set report=0 " tell us when anything is changed via :...
 set noerrorbells " don't make noise
 
 set list " we do want to show tabs, to ensure we get them out of my files
-set listchars=tab:>-,trail:- " show tabs and trailing whitespace
+"set listchars=tab:>-,trail:- " show tabs and trailing whitespace
+set listchars=tab:»·,trail:·
+
 " make the splitters between windows be blank
 set fillchars=vert:\ ,stl:\ ,stlnc:\
 
