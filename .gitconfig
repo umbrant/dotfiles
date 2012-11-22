@@ -6,3 +6,11 @@
 	diff = auto
 	interactive = auto
 	status = auto
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[merge]
+	tool = meld
+[mergetool]
+	prompt = false
