@@ -35,7 +35,7 @@ plugins=(git mvn python ssh-agent svn)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$HOME/local/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin
+export PATH=$HOME/local/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin:/usr/share/doc/git/contrib/workdir
 
 alias mp="mplayer"
 alias ack="ack-grep"
