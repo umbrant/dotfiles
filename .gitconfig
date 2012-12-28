@@ -8,6 +8,7 @@
 	status = auto
 [diff]
 	tool = meld
+	noprefix = true
 [difftool]
 	prompt = false
 [merge]
