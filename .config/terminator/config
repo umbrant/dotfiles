@@ -1,0 +1,15 @@
+[global_config]
+    borderless = True
+    focus = system
+
+[keybindings]
+    go_up = <Alt>k
+    go_down = <Alt>j
+    go_left = <Alt>h
+    go_right = <Alt>l
+
+[profiles]
+    [[default]]
+        show_titlebar = False
+        scrollbar_position = disabled
+        scrollback_lines = 1000
