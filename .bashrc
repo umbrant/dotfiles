@@ -67,3 +67,5 @@ esac
 shopt -s cdspell
 shopt -s dirspell
 shopt -s checkwinsize
+
+umask 022

@@ -44,6 +44,9 @@ alias ack="ack-grep"
 setopt inc_append_history
 setopt share_history
 
+# Don't allow group write
+umask 022
+
 # vi mode
 #bindkey -v
 
