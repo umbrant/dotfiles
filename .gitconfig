@@ -15,3 +15,7 @@
 	tool = meld
 [mergetool]
 	prompt = false
+[log]
+	decorate = full
+[format]
+	pretty = short
