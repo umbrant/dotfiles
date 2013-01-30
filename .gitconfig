@@ -18,4 +18,4 @@
 [log]
 	decorate = full
 [format]
-	pretty = short
+	pretty = medium
