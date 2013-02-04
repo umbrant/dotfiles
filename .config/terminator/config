@@ -13,3 +13,5 @@
         show_titlebar = False
         scrollbar_position = disabled
         scrollback_lines = 1000
+        use_system_font = False
+        font = Mono 10
