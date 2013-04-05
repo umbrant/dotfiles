@@ -85,7 +85,8 @@ filetype plugin indent on " load filetype plugins and indent settings
 set formatoptions=ronl " See Help (complex)
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
 set expandtab " no real tabs please!
-"set nowrap " do not wrap line
+"set nowrap " do not visually wrap line
+set textwidth=0 " do not physically wrap lines
 set preserveindent " but above all -- follow the conventions laid before us
 set ignorecase " case insensitive by default
 set smartcase " if there are caps, go case-sensitive
