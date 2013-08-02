@@ -1,0 +1,70 @@
+#!/bin/bash
+
+function quit {
+    mplayer -ao pulse::0 ~/Music/New.wav > /dev/null < /dev/null 2>&1 &
+    mplayer -ao pulse::1 ~/Music/New.wav > /dev/null < /dev/null 2>&1 &
+    exit $rc
+}
+
+function maven_compile {
+    test $# -lt 1 && echo "Runtime error: need argument!" && exit 1
+    pushd $1
+    mvn $CLEAN package install test -Pdist,native -DskipTests -Dmaven.javadoc.skip || quit
+    popd
+}
+
+function maven_eclipse {
+    test $# -lt 1 && echo "Runtime error: need argument!" && exit 1
+    pushd $1
+    mvn eclipse:clean || quit
+    mvn eclipse:eclipse || quit
+    popd
+}
+
+name=`basename $0`
+
+test $# -lt 1 && echo "Usage `basename $0` hadoop_repo" && exit 1
+
+# Change to the specified directory
+pushd $1
+shift
+
+# Check if it's a clean build or not
+CLEAN=
+if [ "$1" == "clean" ]; then
+    CLEAN=$1
+    echo "Doing a clean build"
+fi
+shift
+
+if [ "$name" == "bhall" ]; then
+    maven_compile hadoop-project
+    maven_compile hadoop-assemblies
+    maven_compile hadoop-common-project/hadoop-annotations
+    maven_compile hadoop-common-project/hadoop-auth
+fi
+
+if [ "$name" == "bhall" -o "$name" == "bhc" ]; then
+    maven_compile hadoop-common-project/hadoop-common
+fi
+
+if [ "$name" == "bhall" -o "$name" == "bhdfs" ]; then
+    maven_compile hadoop-hdfs-project/hadoop-hdfs
+fi
+
+if [ "$name" == "beclipse" ]; then
+    # Trunk now requires the maven plugins to build eclipse:eclipse
+    if [ -d "hadoop-maven-plugins" ]; then
+        maven_compile hadoop-maven-plugins
+    fi
+
+    #maven_eclipse hadoop-assemblies
+    maven_eclipse hadoop-common-project/hadoop-annotations
+    maven_eclipse hadoop-common-project/hadoop-auth
+    maven_eclipse hadoop-common-project/hadoop-common
+    maven_eclipse hadoop-hdfs-project/hadoop-hdfs
+fi
+
+popd
+mplayer -ao pulse::0 ~/Music/Off.wav > /dev/null < /dev/null 2>&1 &
+mplayer -ao pulse::1 ~/Music/Off.wav > /dev/null < /dev/null 2>&1 &
