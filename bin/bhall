@@ -9,7 +9,7 @@ function quit {
 function maven_compile {
     test $# -lt 1 && echo "Runtime error: need argument!" && exit 1
     pushd $1
-    mvn $CLEAN package install test -Pdist,native -DskipTests -Dmaven.javadoc.skip || quit
+    mvn package install test -Pdist,native -DskipTests -Dmaven.javadoc.skip || quit
     popd
 }
 
@@ -30,10 +30,9 @@ pushd $1
 shift
 
 # Check if it's a clean build or not
-CLEAN=
 if [ "$1" == "clean" ]; then
-    CLEAN=$1
     echo "Doing a clean build"
+    mvn clean
 fi
 shift
 
