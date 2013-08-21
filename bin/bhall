@@ -1,15 +1,21 @@
 #!/bin/bash
 
+#set -x
+
 function quit {
-    mplayer -ao pulse::0 ~/Music/New.wav > /dev/null < /dev/null 2>&1 &
-    mplayer -ao pulse::1 ~/Music/New.wav > /dev/null < /dev/null 2>&1 &
+    mplayer -ao pulse $DIR/sounds/New.wav > /dev/null < /dev/null 2>&1 &
     exit $rc
+}
+
+function success {
+    mplayer -ao pulse $DIR/sounds/Off.wav > /dev/null < /dev/null 2>&1 &
+    exit 0
 }
 
 function maven_compile {
     test $# -lt 1 && echo "Runtime error: need argument!" && exit 1
     pushd $1
-    mvn package install test -Pdist,native -DskipTests -Dmaven.javadoc.skip || quit
+    mvn $CLEAN package install test -Pdist,native -DskipTests -Dmaven.javadoc.skip || quit
     popd
 }
 
@@ -22,6 +28,7 @@ function maven_eclipse {
 }
 
 name=`basename $0`
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 test $# -lt 1 && echo "Usage `basename $0` hadoop_repo" && exit 1
 
@@ -30,13 +37,18 @@ pushd $1
 shift
 
 # Check if it's a clean build or not
+CLEAN=
 if [ "$1" == "clean" ]; then
+    CLEAN=$1
     echo "Doing a clean build"
-    mvn clean
 fi
 shift
 
 if [ "$name" == "bhall" ]; then
+    # Do a top-level clean if bhall is specified
+    if [ "$CLEAN" == "clean" ]; then
+        mvn clean || quit
+    fi
     maven_compile hadoop-project
     maven_compile hadoop-assemblies
     maven_compile hadoop-common-project/hadoop-annotations
@@ -65,5 +77,4 @@ if [ "$name" == "beclipse" ]; then
 fi
 
 popd
-mplayer -ao pulse::0 ~/Music/Off.wav > /dev/null < /dev/null 2>&1 &
-mplayer -ao pulse::1 ~/Music/Off.wav > /dev/null < /dev/null 2>&1 &
+success
