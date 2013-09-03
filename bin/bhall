@@ -22,9 +22,10 @@ function maven_compile {
 function maven_eclipse {
     test $# -lt 1 && echo "Runtime error: need argument!" && exit 1
     pushd $1
-    mvn eclipse:clean || quit
-    mvn generate-sources generate-test-sources || quit
-    mvn eclipse:eclipse || quit
+    if [ "$CLEAN" == "clean" ]; then
+        mvn eclipse:clean || quit
+    fi
+    mvn generate-sources generate-test-sources eclipse:eclipse || quit
     popd
 }
 
