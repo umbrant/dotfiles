@@ -2,6 +2,9 @@
 
 #set -x
 
+NAME=`basename $0`
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 function quit {
     mplayer -ao pulse $DIR/sounds/New.wav > /dev/null < /dev/null 2>&1 &
     exit $rc
@@ -15,41 +18,49 @@ function success {
 function maven_compile {
     test $# -lt 1 && echo "Runtime error: need argument!" && exit 1
     pushd $1
-    mvn $CLEAN package install test -Pdist,native -DskipTests -Dmaven.javadoc.skip || quit
+    mvn $CLEAN package install -Pdist $NATIVE -DskipTests -Dmaven.javadoc.skip || quit
     popd
 }
 
 function maven_eclipse {
     test $# -lt 1 && echo "Runtime error: need argument!" && exit 1
     pushd $1
-    if [ "$CLEAN" == "clean" ]; then
+    if [ -n "$CLEAN" ]; then
         mvn eclipse:clean || quit
     fi
     mvn generate-sources generate-test-sources eclipse:eclipse || quit
     popd
 }
 
-name=`basename $0`
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+test $# -lt 1 && echo "Usage $NAME hadoop_repo" && exit 1
 
-test $# -lt 1 && echo "Usage `basename $0` hadoop_repo" && exit 1
+# Check if a clean or native build was requested
+
+CLEAN=
+NATIVE=
+while getopts ":cn" opt; do
+    case $opt in
+        c)
+            echo "Doing a clean build" >&2
+            CLEAN="clean"
+            ;;
+        n)
+            echo "Doing a native build" >&2
+            NATIVE="-Pnative"
+            ;;
+    esac
+done
+shift $((OPTIND-1))
 
 # Change to the specified directory
 pushd $1
 shift
 
-# Check if it's a clean build or not
-CLEAN=
-if [ "$1" == "clean" ]; then
-    CLEAN=$1
-    echo "Doing a clean build"
-fi
-shift
-
-if [ "$name" == "bhall" ]; then
+if [ "$NAME" == "bhall" ]; then
     # Do a top-level clean if bhall is specified
-    if [ "$CLEAN" == "clean" ]; then
+    if [ -n "$CLEAN" ]; then
         mvn clean || quit
+        CLEAN=
     fi
     maven_compile hadoop-project
     maven_compile hadoop-assemblies
@@ -57,15 +68,15 @@ if [ "$name" == "bhall" ]; then
     maven_compile hadoop-common-project/hadoop-auth
 fi
 
-if [ "$name" == "bhall" -o "$name" == "bhc" ]; then
-    maven_compile hadoop-common-project/hadoop-common
+if [ "$NAME" == "bhall" -o "$NAME" == "bhc" ]; then
+    maven_compile hadoop-common-project
 fi
 
-if [ "$name" == "bhall" -o "$name" == "bhdfs" ]; then
+if [ "$NAME" == "bhall" -o "$NAME" == "bhdfs" ]; then
     maven_compile hadoop-hdfs-project/hadoop-hdfs
 fi
 
-if [ "$name" == "beclipse" ]; then
+if [ "$NAME" == "beclipse" ]; then
     # Trunk now requires the maven plugins to build eclipse:eclipse
     if [ -d "hadoop-maven-plugins" ]; then
         maven_compile hadoop-maven-plugins
