@@ -1,6 +1,17 @@
 [user]
 	email = andrew.wang@cloudera.com
 	name = Andrew Wang
+[alias]
+	st = status
+	stat = status
+	co = checkout
+	br = branch
+	re = rebase
+	ci = commit
+	cp = cherry-pick
+[core]
+	editor = vim
+	autocrlf = false
 [color]
 	branch = auto
 	diff = auto
@@ -9,6 +20,7 @@
 [diff]
 	tool = meld
 	noprefix = true
+	binary = true
 [difftool]
 	prompt = false
 [merge]
