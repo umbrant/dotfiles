@@ -29,5 +29,3 @@ while true; do
 done
 
 killall burnP6 > /dev/null 2>&1
-
-popd

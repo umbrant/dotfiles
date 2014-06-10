@@ -16,12 +16,12 @@ function success {
 }
 
 function maven_compile_root {
-    mvn $CLEAN package install -Pdist $NATIVE -DskipTests -Dmaven.javadoc.skip || quit
+    mvn $OFFLINE $CLEAN package install -Pdist $NATIVE -DskipTests -Dmaven.javadoc.skip || quit
 }
 
 function maven_compile {
     test $# -lt 1 && echo "Runtime error: need argument!" && exit 1
-    mvn $CLEAN package install -Pdist $NATIVE -DskipTests -Dmaven.javadoc.skip -pl $1 -am || quit
+    mvn $OFFLINE $CLEAN package install -Pdist $NATIVE -DskipTests -Dmaven.javadoc.skip -pl $1 -am || quit
 }
 
 function maven_eclipse {
@@ -65,7 +65,8 @@ echo "Autodetected project root directory" `pwd`
 
 CLEAN=
 NATIVE=
-while getopts ":cn" opt; do
+OFFLINE=
+while getopts ":cno" opt; do
     case $opt in
         c)
             echo "Doing a clean build" >&2
@@ -74,6 +75,10 @@ while getopts ":cn" opt; do
         n)
             echo "Doing a native build" >&2
             NATIVE="-Pnative"
+            ;;
+        o)
+            echo "Doing an offline build" >&2
+            OFFLINE="-o"
             ;;
     esac
 done

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-TESTS=`git status | egrep -o "Test(.*).java" | cut -d "." -f 1 | paste -sd ,`
+TESTS=`git diff --name-only $1 | egrep -o "Test(.*).java" | cut -d "." -f 1 | paste -sd ,`
 echo "Testing $TESTS"
-mvn test -Dtest=$TESTS
+mvn -o test -Dtest=$TESTS
