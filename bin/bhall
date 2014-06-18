@@ -87,7 +87,7 @@ shift $((OPTIND-1))
 if   [ "$NAME" == "bhall" ]; then
     maven_compile_root
 elif [ "$NAME" == "bhc" ]; then
-    maven_compile hadoop-common-project
+    maven_compile hadoop-common-project/hadoop-common
 elif [ "$NAME" == "bhdfs" ]; then
     maven_compile hadoop-hdfs-project/hadoop-hdfs
 elif [ "$NAME" == "beclipse" ]; then
