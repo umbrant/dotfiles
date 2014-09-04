@@ -33,3 +33,5 @@
 	pretty = medium
 [push]
 	default = simple
+[credential]
+	helper = cache
