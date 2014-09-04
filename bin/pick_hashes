@@ -26,4 +26,5 @@ for hash in `cat $INPUT`; do
     if [[ $? -ne 0 ]]; then
         read "?Unclean pick, need manual intervention..."
     fi
+    echo
 done
