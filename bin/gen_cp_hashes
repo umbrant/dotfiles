@@ -16,7 +16,7 @@ test $# -lt 2 && usage $0
 
 NEEDED=$1
 shift
-OUTPUT=$2
+OUTPUT=$1
 shift
 
 cat $NEEDED | sort -u > /tmp/needed_sorted
@@ -69,6 +69,8 @@ if [[ $NUM_DUPS -ne 0 ]]; then
     done
 fi
 
+# Reverse it so the oldest commit is first
 tac /tmp/needed_commits | cut -d " " -f 1 > $OUTPUT
+
 echo "Done."
 
