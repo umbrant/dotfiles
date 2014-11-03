@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+CCACHE_CPP2=yes exec ccache clang -Qunused-arguments `test -t 2 && echo -fcolor-diagnostics` "$@"
