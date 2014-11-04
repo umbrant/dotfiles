@@ -1,0 +1,46 @@
+#!/usr/bin/python
+
+import os, sys
+import urllib2
+import json
+import xml.etree.ElementTree as ET
+
+if len(sys.argv) != 2:
+    print "Usage:", sys.argv[0], "<jira num>"
+    sys.exit(1)
+
+jira_num = sys.argv[1]
+
+# Fetch the JIRA's attachments as XML
+f = urllib2.urlopen("https://issues.apache.org/jira/sr/jira.issueviews:searchrequest-xml/temp/SearchRequest.xml?jqlQuery=issueKey%3D" + jira_num + "&tempMax=100&field=attachments")
+search_result = f.read()
+f.close()
+
+# Parse XML
+root = ET.fromstring(search_result)
+
+# Find the newest attachment based on ID (monotonically increasing)
+max_id = -1
+root.find("rss")
+for attachment in root.find("channel").find("item").find("attachments").findall("attachment"):
+    aid = int(attachment.get("id"))
+    max_id = max(aid, max_id)
+
+if max_id == -1:
+    print "No attachments found!"
+    sys.exit(1)
+
+f = urllib2.urlopen("https://issues.apache.org/jira/rest/api/2/attachment/%s" % max_id)
+attachment = f.read()
+f.close()
+
+attach_meta = json.loads(attachment)
+attach_filename = attach_meta["filename"]
+attach_content_link = attach_meta["content"]
+
+f = urllib2.urlopen(attach_content_link)
+data = f.read()
+with open(attach_filename, "wb") as attach:
+    attach.write(data)
+
+print "Fetched", attach_filename
