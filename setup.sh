@@ -12,7 +12,8 @@ ln -s $DIR/.zshrc .
 # vim
 ln -s $DIR/.vim .
 ln -s .vim/vimrc .vimrc
-vim +PluginInstall +qall # Vundle
+# Vundle
+vim +PluginInstall +qall
 # Misc
 ln -s $DIR/.ackrc .
 ln -s $DIR/.bashrc .
