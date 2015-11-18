@@ -1,0 +1,35 @@
+#!/usr/bin/python
+
+import datetime
+import fileinput
+import sys
+
+def parse_timestamp(time_str):
+    return datetime.datetime.strptime(time_str, "%b %d %H:%M:%S")
+
+def timedelta2str(delta):
+    micros = delta.microseconds
+    micros += delta.seconds*1000*1000
+    # Parse out days, hours, minutes, secs, millis
+    days = delta.days
+    hours = micros / (1000 * 1000 * 60 * 60)
+    micros -= hours * (1000 * 1000 * 60 * 60)
+    minutes = micros / (1000 * 1000 * 60)
+    micros -= minutes * (1000 * 1000 * 60)
+    seconds = micros / (1000 * 1000)
+
+    return "%02d:%02d:%02d:%02d" % (days, hours, minutes, seconds)
+
+previous_output = None
+previous_datetime = None
+for current_line in fileinput.input():
+    time_str = current_line[:15]
+    output_str = current_line[15:]
+    current_datetime = parse_timestamp(time_str)
+    if previous_datetime is not None:
+        delta = current_datetime - previous_datetime
+        print timedelta2str(delta), previous_output,
+    previous_output = output_str
+    previous_datetime = current_datetime
+
+print timedelta2str(datetime.timedelta(0)), previous_output,
