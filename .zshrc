@@ -53,6 +53,9 @@ umask 022
 # rehash autocomplete index on autocomplete
 zstyle ":completion:*:commands" rehash 1
 
+# Do case-insensitive completion without the .,_ behavior
+zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+
 # Run keychain
 keychain -q $HOME/.ssh/id_rsa
 source ~/.keychain/$HOST-sh
