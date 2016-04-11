@@ -16,6 +16,7 @@ ln -s .vim/vimrc .vimrc
 vim +PluginInstall +qall
 # Misc
 ln -s $DIR/.ackrc .
+mv .bashrc .bashrc.bak
 ln -s $DIR/.bashrc .
 ln -s $DIR/.gitconfig .
 ln -s $DIR/.tmux.conf .
