@@ -22,3 +22,4 @@ ln -s $DIR/.gitconfig .
 ln -s $DIR/.tmux.conf .
 mkdir -p .config/terminator
 ln -s $DIR/.config/terminator/config .config/terminator
+ln -s $DIR/hadoop-dev-scripts/env.source .
