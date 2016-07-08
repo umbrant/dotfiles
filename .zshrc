@@ -1,3 +1,6 @@
+# Location of .zshrc
+DIR="$(cd "$(dirname "$(readlink -f "${(%):-%N}")")" && pwd)"
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -61,3 +64,4 @@ keychain -q $HOME/.ssh/id_rsa
 source ~/.keychain/$HOST-sh
 
 source $HOME/.zshrc.local
+source $DIR/hadoop-dev-scripts/hadoop-dev-scripts.sh
