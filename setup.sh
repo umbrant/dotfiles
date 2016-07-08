@@ -20,3 +20,5 @@ mv .bashrc .bashrc.bak
 ln -s $DIR/.bashrc .
 ln -s $DIR/.gitconfig .
 ln -s $DIR/.tmux.conf .
+mkdir -p .config/terminator
+ln -s $DIR/.config/terminator/config .config/terminator
