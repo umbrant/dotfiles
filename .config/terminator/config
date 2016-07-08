@@ -1,20 +1,29 @@
 [global_config]
-    borderless = True
-    focus = system
-
+  borderless = True
+  focus = system
 [keybindings]
-    go_up = <Alt>k
-    go_down = <Alt>j
-    go_left = <Alt>h
-    go_right = <Alt>l
-
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
+  go_up = <Alt>k
+  layout_launcher = None
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
 [profiles]
-    [[default]]
-        show_titlebar = False
-        scrollbar_position = disabled
-        scrollback_lines = 1000
-        use_system_font = False
-        font = DejaVu Sans Mono 9
-        foreground_color = "#FFFFFF"
-        background_type = transparent
-        background_darkness = 0.97
+  [[default]]
+    background_darkness = 0.97
+    background_image = None
+    background_type = transparent
+    font = DejaVu Sans Mono 9
+    foreground_color = "#ffffff"
+    scrollback_lines = 1000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
