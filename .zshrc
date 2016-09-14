@@ -60,10 +60,6 @@ zstyle ":completion:*:commands" rehash 1
 # Do case-insensitive completion without the .,_ behavior
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 
-# Run keychain
-keychain -q $HOME/.ssh/id_rsa
-source ~/.keychain/$HOST-sh
-
 source $HOME/.zshrc.local
 source $DIR/hadoop-dev-scripts/hadoop-dev-scripts.sh
 
