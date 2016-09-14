@@ -66,3 +66,18 @@ source ~/.keychain/$HOST-sh
 
 source $HOME/.zshrc.local
 source $DIR/hadoop-dev-scripts/hadoop-dev-scripts.sh
+
+alias mru="vim -c \"MRU\""
+
+# Go to the root of a source repo
+cdr() {
+    cwd=$PWD
+    while [[ ( ! -d "$PWD/.git" && ! -d "$PWD/.svn" ) && "$PWD" != "/" ]]; do
+        cd ..
+    done
+    if [[ $PWD == "/" ]]; then
+        print "Not within a git or svn repo?"
+        cd "$cwd"
+    fi
+}
+

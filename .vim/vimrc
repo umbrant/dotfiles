@@ -21,6 +21,7 @@ Plugin 'godlygeek/tabular' " Required for vim-markdown
 Plugin 'plasticboy/vim-markdown' " Markdown syntax
 Plugin 'Pydiction' " Python syntax
 Plugin 'fatih/vim-go' " Go syntax
+Plugin 'mru.vim' " most-recently used files
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
