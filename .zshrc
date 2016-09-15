@@ -60,7 +60,6 @@ zstyle ":completion:*:commands" rehash 1
 # Do case-insensitive completion without the .,_ behavior
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 
-source $HOME/.zshrc.local
 source $DIR/hadoop-dev-scripts/hadoop-dev-scripts.sh
 
 alias mru="vim -c \"MRU\""
@@ -77,3 +76,4 @@ cdr() {
     fi
 }
 
+source $HOME/.zshrc.local
