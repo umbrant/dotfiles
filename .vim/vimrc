@@ -52,6 +52,9 @@ set nostartofline " leave my cursor where it was
 if has('syntax') && (&t_Co > 2) || has('gui_running')
     syntax on
 endif
+set guifont=Monospace\ 14
+" Disable all the gui elements in GVim
+set guioptions=
 
 set background=dark
 
@@ -68,6 +71,9 @@ colorscheme molokai
 " Make the spell highlighting nicer
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
+hi SpellCap cterm=underline
+hi SpellLocal cterm=underline
+hi SpellRare cterm=underline
 
 " Viewport Controls
 " ie moving between split panes
@@ -122,7 +128,7 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 
 " Visual Cues
 set showmatch
-set matchtime=5
+set matchtime=1
 set so=10
 set novisualbell
 set noerrorbells
@@ -141,6 +147,7 @@ filetype plugin indent on " load filetype plugins and indent settings
 
 " Text Formatting/Layout
 set formatoptions=ronl " See Help (complex)
+set linespace=2 " Let underscores breathe
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
 set expandtab " no real tabs please!
 "set nowrap " do not visually wrap line
