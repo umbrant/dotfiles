@@ -38,7 +38,7 @@ plugins=(git mvn python ssh-agent svn)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$HOME/local/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin:/usr/share/doc/git/contrib/workdir
+export PATH=$HOME/local/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin:/usr/share/doc/git/contrib/workdir:$PATH
 export PATH=$DIR/bin:$PATH
 
 alias mp="mplayer"
@@ -75,5 +75,9 @@ cdr() {
         cd "$cwd"
     fi
 }
+
+if [[ $TILIX_ID ]]; then
+    source /etc/profile.d/vte.sh
+fi
 
 source $HOME/.zshrc.local

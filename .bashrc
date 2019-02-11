@@ -7,7 +7,7 @@
 source /etc/bash.bashrc
 
 # Add keychain also
-source ~/.keychain/`hostname`-sh > /dev/null
+#source ~/.keychain/`hostname`-sh > /dev/null
 
 # Add root and local dirs to PATH
 PATH=~/local/bin:$PATH:/sbin:/usr/sbin:/usr/local/sbin:~/local/lejos_nxj/bin
