@@ -45,6 +45,7 @@ export PATH=$DIR/bin:$PATH
 
 alias mp="mplayer"
 alias ack="ack-grep"
+alias gg='git grep'
 
 # Share history across shells
 setopt inc_append_history
