@@ -35,6 +35,9 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+
+zstyle :omz:plugins:ssh-agent identities scaleapi
+
 plugins=(git mvn python ssh-agent svn)
 
 source $ZSH/oh-my-zsh.sh
@@ -42,10 +45,12 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=$HOME/local/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin:/usr/share/doc/git/contrib/workdir:$PATH
 export PATH=$DIR/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 alias mp="mplayer"
 alias ack="ack-grep"
 alias gg='git grep'
+alias ag='ag --pager=less'
 
 # Share history across shells
 setopt inc_append_history
@@ -84,3 +89,10 @@ if [[ $TILIX_ID ]]; then
 fi
 
 source $HOME/.zshrc.local
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/sls.zsh ]] && . /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/sls.zsh

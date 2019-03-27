@@ -38,3 +38,5 @@
 	windowMemory = 100m
 	sizeLimit = 100m
 	threads = 1
+[pager]
+	branch = false
