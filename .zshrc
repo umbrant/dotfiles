@@ -38,7 +38,7 @@ CASE_SENSITIVE="true"
 
 zstyle :omz:plugins:ssh-agent identities scaleapi
 
-plugins=(git mvn python ssh-agent svn)
+plugins=(python ssh-agent svn)
 
 source $ZSH/oh-my-zsh.sh
 
