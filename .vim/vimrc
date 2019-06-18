@@ -23,6 +23,7 @@ Plugin 'Pydiction' " Python syntax
 Plugin 'fatih/vim-go' " Go syntax
 Plugin 'mru.vim' " most-recently used files
 Plugin 'leafgarland/typescript-vim.git' " Typescript syntax
+Plugin 'hashivim/vim-terraform'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
