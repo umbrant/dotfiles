@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -e
+
+if  [[ ! -d ".git" ]]; then
+    >&2 echo "Error: Working directory is not the root of a git repository"
+    exit 1
+fi
+
+if  [[ ! -z "$(git status --porcelain --untracked-files=no)" ]]; then
+    >&2 echo "Error: Git working directory is unclean"
+    exit 1
+fi
+
+if [[ -z "$1" ]]; then
+    >&2 echo "Must provide scaleapi/scaleapi PR number"
+fi
+
+# Reset
+git checkout master
+git pull
+git branch -D toreview
+
+git fetch origin pull/$1/head:toreview
+git diff master...toreview > /tmp/toreview.patch
+git checkout master
+git apply /tmp/toreview.patch
