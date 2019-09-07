@@ -19,9 +19,9 @@ fi
 # Reset
 git checkout master
 git pull
-git branch -D toreview
+git branch -D toreview || true
 
 git fetch origin pull/$1/head:toreview
 git diff master...toreview > /tmp/toreview.patch
 git checkout master
-git apply /tmp/toreview.patch
+git apply -3 /tmp/toreview.patch
