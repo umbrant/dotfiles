@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -e
+
+BRANCHES=""
+
+for x in $(git branch --format "%(refname:short)" | egrep -v "^(beta|dev|hotfix|master|toreview)$"); do
+    summary=$(git log -1 --pretty=format:%s $x)
+    escaped=$(printf "%q" "$summary")
+    author=$(git config user.email)
+    found=$(git log --grep="$escaped" -1 --pretty=format:%s origin/master --author="$author")
+    if [[ ! -z "$found" ]]; then
+        echo "$x"
+        echo "  $(git log -1 --pretty=format:%s $x)"
+        BRANCHES="$BRANCHES $x"
+    fi
+done
+
+if [[ ! -z "$BRANCHES" ]]; then
+    echo
+    echo "git branch -D$BRANCHES"
+fi
