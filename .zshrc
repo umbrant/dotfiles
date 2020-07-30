@@ -1,5 +1,5 @@
 # Location of .zshrc
-DIR="$(cd "$(dirname "$(readlink -f "${(%):-%N}")")" && pwd)"
+DIR="$(cd "$(dirname "$(greadlink -f "${(%):-%N}")")" && pwd)"
 
 ZSH_DISABLE_COMPFIX=true
 
@@ -36,14 +36,12 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
-zstyle :omz:plugins:ssh-agent identities scaleapi
-
-plugins=(python ssh-agent svn)
+plugins=(python svn)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$HOME/local/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin:/usr/share/doc/git/contrib/workdir:$PATH
+export PATH=$HOME/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/sbin:/usr/sbin:/usr/local/sbin:/usr/share/doc/git/contrib/workdir:$PATH
 export PATH=$DIR/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
@@ -55,6 +53,7 @@ alias ag='ag --pager=less'
 # Share history across shells
 setopt inc_append_history
 setopt share_history
+setopt HIST_FIND_NO_DUPS
 
 # Don't allow group write
 umask 022
@@ -90,13 +89,3 @@ fi
 
 source $HOME/.zshrc.local
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/sls.zsh ]] && . /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/sls.zsh
-
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/slss.zsh ]] && . /home/andrew/dev/scaleapi/node_modules/tabtab/.completions/slss.zsh
