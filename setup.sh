@@ -15,11 +15,7 @@ ln -s .vim/vimrc .vimrc
 # Vundle
 vim +PluginInstall +qall
 # Misc
-ln -s $DIR/.ackrc .
 mv .bashrc .bashrc.bak
 ln -s $DIR/.bashrc .
 ln -s $DIR/.gitconfig .
 ln -s $DIR/.tmux.conf .
-mkdir -p .config/terminator
-ln -s $DIR/.config/terminator/config .config/terminator
-ln -s $DIR/hadoop-dev-scripts/env.source .

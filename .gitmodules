@@ -7,6 +7,3 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
-[submodule "hadoop-dev-scripts"]
-	path = hadoop-dev-scripts
-	url = git@github.com:umbrant/hadoop-dev-scripts.git
