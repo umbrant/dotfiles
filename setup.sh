@@ -17,5 +17,5 @@ vim +PluginInstall +qall
 # Misc
 mv .bashrc .bashrc.bak
 ln -s $DIR/.bashrc .
-ln -s $DIR/.gitconfig .
+cp $DIR/.gitconfig.template .gitconfig
 ln -s $DIR/.tmux.conf .

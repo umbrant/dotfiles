@@ -1,42 +1,41 @@
-[user]
-	email = andrew.wang@airtable.com
-	name = Andrew Wang
 [alias]
-	st = status
-	stat = status
-	co = checkout
-	br = branch
-	re = rebase
-	ci = commit
-	cp = cherry-pick
+    st = status
+    stat = status
+    co = checkout
+    br = branch
+    re = rebase
+    ci = commit
+    cp = cherry-pick
 [core]
-	editor = vim
-	autocrlf = false
+    editor = vim
+    autocrlf = false
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 [diff]
-	tool = meld
-	binary = true
+    tool = meld
+    binary = true
 [difftool]
-	prompt = false
+    prompt = false
 [merge]
-	tool = meld
+    tool = meld
 [mergetool]
-	prompt = false
+    prompt = false
 [log]
-	decorate = full
+    decorate = full
 [format]
-	pretty = medium
+    pretty = medium
 [push]
-	default = simple
+    default = simple
 [credential]
-	helper = cache
+    helper = cache
 [pack]
-	windowMemory = 100m
-	sizeLimit = 100m
-	threads = 1
+    windowMemory = 100m
+    sizeLimit = 100m
+    threads = 1
 [pager]
-	branch = false
+    branch = false
+[include]
+    path = ~/.gitconfig.local

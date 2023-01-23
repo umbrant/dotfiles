@@ -1,5 +1,10 @@
 # Location of .zshrc
-DIR="$(cd "$(dirname "$(greadlink -f "${(%):-%N}")")" && pwd)"
+if [[ "$(uname)" == "Darwin" ]]; then
+    DIR="$(cd "$(dirname "$(greadlink -f "${(%):-%N}")")" && pwd)"
+else;
+    DIR="$(cd "$(dirname "$(readlink -f "${(%):-%N}")")" && pwd)"
+fi
+
 
 ZSH_DISABLE_COMPFIX=true
 
@@ -66,8 +71,6 @@ zstyle ":completion:*:commands" rehash 1
 
 # Do case-insensitive completion without the .,_ behavior
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
-
-source $DIR/hadoop-dev-scripts/hadoop-dev-scripts.sh
 
 alias mru="vim -c \"MRU\""
 

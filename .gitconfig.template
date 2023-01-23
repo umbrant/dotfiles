@@ -1,0 +1,5 @@
+[user]
+    email = andrew@umbrant.com
+    name = Andrew Wang
+[include]
+    path = ~/dev/dotfiles/.gitconfig
