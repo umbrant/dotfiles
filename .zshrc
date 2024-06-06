@@ -90,5 +90,17 @@ if [[ $TILIX_ID ]]; then
     source /etc/profile.d/vte.sh
 fi
 
+announce() {
+    exit_code=$?
+    command=$history[$HISTCMD]
+    if [[ $exit_code = 0 ]]; then
+        osascript -e 'display notification "$ '$command'" with title "Command succeeded!"'
+        say success
+    else
+        osascript -e 'display notification "$ '$command'\nFailed with exit code: '$exit_code'" with title "Command failed!"'
+        say failure
+    fi
+}
+
 source $HOME/.zshrc.local
 
