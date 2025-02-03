@@ -86,10 +86,6 @@ cdr() {
     fi
 }
 
-if [[ $TILIX_ID ]]; then
-    source /etc/profile.d/vte.sh
-fi
-
 announce() {
     exit_code=$?
     command=$history[$HISTCMD]

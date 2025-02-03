@@ -9,6 +9,7 @@ cd $HOME
 # zsh
 ln -s $DIR/oh-my-zsh .oh-my-zsh
 ln -s $DIR/.zshrc .
+touch .zshrc.local
 # vim
 ln -s $DIR/.vim .
 ln -s .vim/vimrc .vimrc
