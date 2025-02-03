@@ -86,6 +86,13 @@ cdr() {
     fi
 }
 
+# If vte.sh doesn't exist, create it by running this as root:
+#   ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+# See: https://gnunn1.github.io/tilix-web/manual/vteconfig/
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 announce() {
     exit_code=$?
     command=$history[$HISTCMD]
