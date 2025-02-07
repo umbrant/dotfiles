@@ -20,3 +20,5 @@ mv .bashrc .bashrc.bak
 ln -s $DIR/.bashrc .
 cp $DIR/.gitconfig.template .gitconfig
 ln -s $DIR/.tmux.conf .
+# Tilix
+dconf load /com/gexperts/Tilix/ < $DIR/tilix.dconf
